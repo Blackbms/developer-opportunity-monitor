@@ -1,0 +1,37 @@
+poll_interval_seconds: 3600
+min_score: 10
+
+locations:
+  include:
+    - north america
+    - united states
+    - canada
+    - mexico
+
+keywords:
+  include:
+    developer experience: 10
+    platform engineer: 8
+    devsecops: 7
+    solutions engineer: 7
+    customer engineer: 6
+    ci/cd: 8
+  exclude:
+    - marketing
+    - recruiter
+    - recruiting
+    - sales executive
+    - designer
+    - frontend only
+    - Executive
+    - new media
+    - security researcher
+
+companies:
+  - name: GitLab
+    provider: greenhouse
+    board: gitlab
+  - name: GitHub
+    provider: icims
+    careers_url: https://www.github.careers/careers-home/jobs
+    min_score: 0

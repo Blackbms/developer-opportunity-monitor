@@ -133,3 +133,59 @@ weights:
   ci/cd: 8
   devsecops: 7
   customer engineer: 9
+```
+
+---
+
+# Local Setup (uv)
+
+## Prerequisites
+
+- Python 3.11+
+- `uv` installed: https://docs.astral.sh/uv/getting-started/installation/
+
+## Setup
+
+```bash
+uv sync
+cp .env.example .env
+```
+
+Edit `.env` and set:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+## Run Once
+
+```bash
+uv run -m app.main
+```
+
+The first run creates `data/jobs.db` automatically for deduplication.
+
+## Test Telegram
+
+```bash
+make notify-test
+```
+
+If this fails, confirm `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set in `.env`.
+
+## Debug Telegram
+
+```bash
+make notify-debug
+```
+
+This checks token validity (`getMe`) and chat access (`getChat`) and prints next-step guidance.
+It also includes Telegram API error descriptions (for example, permission or membership errors).
+
+## Discover Chat IDs
+
+```bash
+make notify-chat-ids
+```
+
+If no chat IDs are returned, send `/start` to your bot (or post in your target
+group/channel) and run it again.
